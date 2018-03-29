@@ -1,9 +1,10 @@
 'use strict';
-var rank_desc = require('../../practices/map/rank_desc.js');
+var reducer = function (pre,cur) {
+  return  cur > pre ? pre : cur;
+};
 
 function collect_min_number(collection) {
-  var arr = rank_desc(collection);
-  return arr[0];
+  return collection.reduce(reducer);
 }
 
 module.exports = collect_min_number;

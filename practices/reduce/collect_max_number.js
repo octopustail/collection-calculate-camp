@@ -1,9 +1,11 @@
 'use strict';
-var rank_asc = require('../../practices/map/rank_asc.js');
-function collect_max_number(collection) {
 
-  var arr = rank_asc(collection);
-  return arr[0];
+var reducer = function (pre,cur) {
+  return  cur > pre ? cur : pre;
+};
+
+function collect_max_number(collection) {
+ return collection.reduce(reducer);
 }
 
 module.exports = collect_max_number;
