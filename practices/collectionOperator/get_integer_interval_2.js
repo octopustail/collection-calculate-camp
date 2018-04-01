@@ -1,7 +1,20 @@
 'use strict';
 
-function get_integer_interval_2(number_a, number_b) {
-  //在这里写入代码
+function get_integer_interval_2(a, b) {
+
+  var max = a > b ? a : b,
+    min = a < b ? a : b,
+    result = [];
+
+  for (var i = min; i <= max; i++) {
+    if (i % 2 === 0) {
+      result.push(i);
+    }
+  }
+  if (a > b) {
+    result.reverse();
+  }
+  return result;
 }
 
 module.exports = get_integer_interval_2;

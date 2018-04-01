@@ -1,18 +1,18 @@
 'use strict';
 
-function get_integer_interval(number_a, number_b) {
-  var max;
-  var min;
-  var arr = [];
-  if (number_a < number_b){
-    max = number_b;
-    min = number_a;
-  }else{
-    max = number_a;
-    min = number_b;
-  }//在这里写入代码
-  for(var i = min;i<=max;i++)
-  arr.push(i);
+function get_integer_interval(a, b) {
+  var max = a > b ? a : b,
+      min = a < b ? a : b,
+      arr = [];
+
+  for (var i = min; i <= max; i++) {
+    arr.push(i);
+  }
+  if (a > b) {
+    arr.reverse();
+  }
+
+  return arr
 }
 
 module.exports = get_integer_interval;
