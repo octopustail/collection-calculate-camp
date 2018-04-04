@@ -11,7 +11,7 @@ describe('even_group_calculate_average', function() {
     expect(result).toEqual([4, 56, 556]);
   });
 
-  it('首先选出所有第偶数个元素，当不含有偶数时', function() {
+  it('首先选出所有第偶 数个元素，当不含有偶数时', function() {
     var result = even_group_calculate_average(collection_b);
     expect(result).toEqual([0]);
   });

@@ -1,27 +1,47 @@
 //没有完成
 'use strict';
-// var divide_num = 10;
-// var group_index = 0;
-// var arr = [];
-// var find_even = function (elem, index) {
-//   return (index % 2 !== 0) && (elme % 2 !== 0);
-//};
-// var group_by_Digit = function (value) {
-  // var n = value;
-  // while (n / 10 > 1) {
-  //   group_index++;
-  //   divide_num *= divide_num;
-  //   n = Math.ceil(n / 10);
-  // }
-  // arr[group_index].push(value);
-//};
+var isevens = function (elem, index) {
+  return index % 2 != 0 && elem % 2 == 0
+};
+var existKey = function (key, group) {
+  for (var i = 0; i < group.length; i++) {
+    if (key == group[i].key) {
+      return group[i];
+    }
+  }
+
+}
 
 var even_group_calculate_average = function (collection) {
-  // var group = [];
-  // collection.filter(find_even)
-  //   .sort(function (a, b) {
-  //     return a - b
-  //   })
-  //   .map(group_by_Digit())
+  var arr = collection.filter(isevens);
+  var group = [],
+    result = [];
+  for (var i = 0; i < arr.length; i++) {
+    var num = arr[i];
+    var count = 0
+    while (num) {
+      num = parseInt(num / 10);
+      count++
+    }
+    var elem = existKey(count, group);
+    if (elem) {
+      elem.total += arr[i];
+      elem.count++
+    } else {
+      group.push({"key": count, "total": arr[i], "count": 1});
+    }
+  }
+  if (group.length == 0) {
+    result.push(0);
+  } else {
+    for (var i = 0; i < group.length; i++) {
+      var ave = group[i].total / group[i].count
+      result.push(ave)
+    }
+  }
+  result = result.sort(function (a, b) {
+    return a - b
+  });
+  return result;
 };
 module.exports = even_group_calculate_average;

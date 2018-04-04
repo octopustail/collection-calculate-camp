@@ -1,5 +1,31 @@
-function count_same_elements(collection) {
-  //在这里写入代码
+function shownkey(key, result) {
+  for (var j = 0; j < result.length; j++) {
+    if (key == result[j].key) {
+      return result[j];
+    }
+  }
 }
 
-module.exports = count_same_elements;
+function count_same_elements(collection) {
+  var result = [];
+
+  for (var i = 0; i < collection.length; i++) {
+    if (collection[i].indexOf('-')!= -1 ) {
+      collection[i] = collection[i].split("-")
+
+      result.push({"key": collection[i][0], "count": parseInt(collection[i][1])})
+    } else {
+      var elem = shownkey(collection[i], result)
+
+      if (elem) {
+        elem.count++
+      } else {
+        result.push({"key": collection[i], "count": 1})
+      }
+    }
+
+
+  }
+  return result;
+}
+  module.exports = count_same_elements;
